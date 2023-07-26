@@ -1,0 +1,102 @@
+{% extends "account/base.html" %}
+{% load static %}
+{% load i18n %}
+{% block head_title %}{% trans "Log in" %}{% endblock %}
+{% block extra_head %}
+<!--===============================================================================================--> 
+<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %%}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/animate/animate.css' %}">
+<!--===============================================================================================--> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/animsition/css/animsition.min.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================--> 
+<link rel="stylesheet" type="text/css" href="{% static 'css/vendor/daterangepicker/daterangepicker.css' %}">
+<!--===============================================================================================-->
+<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<!--===============================================================================================-->
+{% endblock %}
+{% block content %}
+
+<div class="limiter">
+         
+
+   <div class="container-login100" style="background-image: url('{% static 'images/bg-01.jpg' %}');">
+      <div class="wrap-login100">
+         <form class="login100-form validate-form" method="post" action="{% url 'account_login' %}">
+            {% csrf_token %}
+            <span class="login100-form-logo">
+            <i class="zmdi zmdi-landscape"></i>
+            </span>
+            <span class="login100-form-title p-b-34 p-t-27">
+            {% trans "Log in" %}
+            </span>
+            <div class="wrap-input100 validate-input" data-validate = "Enter username">
+               <input class="input100" type="text" name="login" placeholder="Username" autocomplete="username" maxlength="150" required id="id_login">
+               <span class="focus-input100" data-placeholder="&#xf207;"></span>
+            </div>
+            <div class="wrap-input100 validate-input" data-validate="Enter password">
+               <input class="input100" type="password" name="password" placeholder="Password" autocomplete="current-password" required id="id_password">
+			 
+			   <span class="focus-input100" data-placeholder="&#xf191;"></span>
+            </div>
+            <div class="contact100-form-checkbox">
+               <label class="label-checkbox100" for="remember">
+               <input class="input-checkbox100" id="id_remember" type="checkbox" name="remember">
+               Remember me 
+               </label>
+            </div>
+            <div class="container-login100-form-btn">
+				{% if redirect_field_value %}
+           			 <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+				{% endif %}
+               <button class="login100-form-btn" type="submit">
+               {% trans "Login" %}
+               </button>
+               <p>{% blocktrans %}
+                  <br>
+                  <a class="txt1" href="{{ signup_url }}">
+                  If you have not created an account yet, please sign up first.
+                  </a>
+                  {% endblocktrans %}
+               </p>
+               <p>
+                  <br />
+                  <a class="txt1" href="{% url 'account_reset_password' %}">
+                  {% trans "Forgot Password?" %}
+                  </a>
+               </p>
+            </div>
+         </form>
+      </div>
+   </div>
+</div>
+
+<!--===============================================================================================-->
+<script src="{% static 'js/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'js/animsition/js/animsition.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'js/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'js/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'js/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'js/daterangepicker/moment.min.js' %}"></script>
+<script src="{% static 'js/daterangepicker/daterangepicker.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'js/countdowntime/countdowntime.js' %}"></script>
+<!--===============================================================================================-->
+<script src="{% static 'js/main.js' %}"></script>
+
+{% endblock %}
