@@ -3,7 +3,7 @@
 {% load static %}
 {% block head_title %}{% trans "Home" %}{% endblock head_title %}
 {% block extra_head %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/task.css' %}">
 <link
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
   rel="stylesheet"
@@ -21,7 +21,6 @@
 {% endblock extra_head %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
 <section class="vh-100">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -38,12 +37,12 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-row align-items-center">
-                      <input type="text" class="form-control form-control-lg" id="exampleFormControlInput1"
+                      <input type="text" class="form-control form-control-lg" id="FormControlInput"
                         placeholder="Add new...">
                       <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i
                           class="fas fa-calendar-alt fa-lg me-3"></i></a>
                       <div>
-                        <button type="button" class="btn btn-primary">Add</button>
+                        <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
                       </div>
                     </div>
                   </div>
@@ -68,6 +67,8 @@
                 <a href="#!" style="color: #23af89;" data-mdb-toggle="tooltip" title="Ascending"><i
                     class="fas fa-sort-amount-down-alt ms-2"></i></a>
               </div>
+
+              <!--Start User To-Do List-->
               {% for task in tasks  %}
               <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
                
@@ -98,7 +99,16 @@
                 </li>
               </ul>
               {% endfor %}
-  
+            <!--End User To-Do List-->
+           
+            <!--Start Form to create a task-->
+              <form action="" method="post" id="frm-task" style="display: none;">
+                {% csrf_token %}
+                <input type="text" value="" name="description" id="desc-task">
+                <button type="submit"></button>
+              </form>
+            <!--End Form to create a task-->
+              
             </div>
           </div>
         </div>
@@ -109,4 +119,5 @@
    type="text/javascript"
    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"
 ></script>
+<script src="{% static 'js/task.js' %}"></script>
 {% endblock content %}
