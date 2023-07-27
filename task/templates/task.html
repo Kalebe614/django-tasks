@@ -69,36 +69,58 @@
               </div>
 
               <!--Start User To-Do List-->
-              {% for task in tasks  %}
-              <ul class="list-group list-group-horizontal rounded-0 bg-transparent">
-               
-                <li
-                  class="list-group-item d-flex align-items-center ps-0 pe-3 py-1 rounded-0 border-0 bg-transparent">
-                  <div class="form-check">
-                    <input class="form-check-input me-0" type="checkbox" value="" 
-                     id="flexCheckChecked{{task.id}}"
-                      aria-label="..." {% if task.completed%} checked {% endif %} />
-                  </div>
-                </li>
-                <li
-                  class="list-group-item px-3 py-1 d-flex align-items-center flex-grow-1 border-0 bg-transparent">
-                  <p class="lead fw-normal mb-0">{{ task.description }}</p>
-                </li>
-                <li class="list-group-item ps-3 pe-0 py-1 rounded-0 border-0 bg-transparent">
-                  <div class="d-flex flex-row justify-content-end mb-1">
-                    <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i
-                        class="fas fa-pencil-alt me-3"></i></a>
-                    <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i
-                        class="fas fa-trash-alt"></i></a>
-                  </div>
-                  <div class="text-end text-muted">
-                    <a href="#!" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
-                      <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>{{task.created}}</p>
-                    </a>
-                  </div>
-                </li>
-              </ul>
-              {% endfor %}
+              
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 10%;">Completed</th>
+                    <th style="width: 60%;">Description</th>
+                    <th style="width: 15%; text-align: center;">Due Date</th>
+                    <th style="width: 15%; text-align: center;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for task in tasks %}
+                  <tr>
+                    <!-- Completed -->
+                    <td class="align-middle text-center">
+                      <div class="form-check">
+                        <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked{{ task.id }}" aria-label="..." {% if task.completed %} checked {% endif %} />
+                      </div>
+                    </td>
+                    
+                    <!-- Description -->
+                    <td class="align-middle">{{ task.description }}</td>
+                    
+                    <!-- Due date -->
+                    <td class="align-middle text-center">
+                      <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
+                        <p class="small mb-0">
+                          <a href="#!" data-mdb-toggle="tooltip" title="Due on date">
+                            <i class="fas fa-hourglass-half me-2 text-warning"></i>
+                          </a>
+                          28th Jun 2020 <!-- Substitua esta data pela data real do objeto 'task' -->
+                        </p>
+                      </div>
+                    </td>
+                    
+                    <!-- Actions -->
+                    <td class="align-middle text-center">
+                      <div class="d-flex flex-row justify-content-end mb-1">
+                        <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
+                        <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>
+                      </div>
+                      <div class="text-end text-muted">
+                        <a href="" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
+                          <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>{{ task.created }}</p> <!-- Substitua "{{ task.created }}" pela data real do objeto 'task' -->
+                        </a>
+                      </div>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+ 
             <!--End User To-Do List-->
            
             <!--Start Form to create a task-->
