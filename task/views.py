@@ -25,3 +25,12 @@ class TaskCreateView(CreateView):
         messages.success(self.request,'Task created successfully')
         return super().form_valid(form)
 
+class TaskDeleteView(DeleteView):
+    template_name = 'task.html'
+    model = TaskModel
+    success_url = reverse_lazy('task')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request,'Task deleted successfully')
+        return response
