@@ -108,7 +108,8 @@
                     <td class="align-middle text-center">
                       <div class="d-flex flex-row justify-content-end mb-1">
                         <a href="#!" class="text-info" data-mdb-toggle="tooltip" title="Edit todo"><i class="fas fa-pencil-alt me-3"></i></a>
-                        <a href="#!" class="text-danger" data-mdb-toggle="tooltip" title="Delete todo"><i class="fas fa-trash-alt"></i></a>
+                        <button type="button" name="btn-delete" class="text-danger" data-mdb-toggle="modal" data-mdb-target="#modal" data-task-id="{{task.id}}" data-task-description="{{task.description}}">
+                          <i class="fas fa-trash-alt"></i></button>
                       </div>
                       <div class="text-end text-muted">
                         <a href="" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
@@ -130,7 +131,31 @@
                 <button type="submit"></button>
               </form>
             <!--End Form to create a task-->
-              
+
+                     
+
+              <!-- Modal -->
+              <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="modalTitle">Delete Task</h5>
+                      <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                      <form action="" method="post" id="frm-delete">
+                        {% csrf_token %}
+                        <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">No</button>
+                        <button type="submit" id="btn-yes-delete" class="btn btn-primary">Yes</button>
+                    </form>    
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+                            
             </div>
           </div>
         </div>
