@@ -18,6 +18,9 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.css"
   rel="stylesheet"
 />
+
+<link rel = "stylesheet" href = "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+
 {% endblock extra_head %}
 
 {% block content %}
@@ -39,8 +42,7 @@
                     <div class="d-flex flex-row align-items-center">
                       <input type="text" class="form-control form-control-lg" id="FormControlInput"
                         placeholder="Add new...">
-                      <a href="#!" data-mdb-toggle="tooltip" title="Set due date"><i
-                          class="fas fa-calendar-alt fa-lg me-3"></i></a>
+                          <input type = "date" data-mdb-toggle="tooltip" title="Set due date" id="calendar">  
                       <div>
                         <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
                       </div>
@@ -94,12 +96,14 @@
                     
                     <!-- Due date -->
                     <td class="align-middle text-center">
+                      {% if task.dueDate %}
                       <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
-                        <p class="small mb-0">
+                          <p class="small mb-0">   
                           <a href="#!" data-mdb-toggle="tooltip" title="Due on date">
                             <i class="fas fa-hourglass-half me-2 text-warning"></i>
                           </a>
-                          28th Jun 2020
+                          {{task.dueDate}}
+                          {% endif %}
                         </p>
                       </div>
                     </td>
@@ -113,7 +117,7 @@
                       </div>
                       <div class="text-end text-muted">
                         <a href="" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
-                          <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>{{ task.created }}</p> <!-- Substitua "{{ task.created }}" pela data real do objeto 'task' -->
+                          <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>{{ task.created }}</p> 
                         </a>
                       </div>
                     </td>
@@ -122,15 +126,16 @@
                 </tbody>
               </table>
  
-            <!--End User To-Do List-->
+            
            
-            <!--Start Form to create a task-->
+            <!-- Form to create a task-->
               <form action="" method="post" id="frm-task" style="display: none;">
                 {% csrf_token %}
                 <input type="text" value="" name="description" id="desc-task">
+                <input type="date" value="" name="dueDate" id="due-date">
                 <button type="submit"></button>
               </form>
-            <!--End Form to create a task-->
+            
 
                      
 
@@ -162,6 +167,10 @@
       </div>
     </div>
   </section>
+
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>  
+<script src ="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+
   <script
    type="text/javascript"
    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.0/mdb.min.js"

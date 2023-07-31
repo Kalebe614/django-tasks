@@ -17,7 +17,7 @@ class TaskView(ListView):
 class TaskCreateView(CreateView):
     template_name = 'task.html'
     model = TaskModel
-    fields = ['description']
+    fields = ['description', 'dueDate']
     success_url = reverse_lazy('task')
 
     def form_valid(self, form):

@@ -13,6 +13,9 @@ button {
     border: none;
 }
 
-  
+input#calendar {
+    position: relative;
+   right: 15px;
+}
   
   
