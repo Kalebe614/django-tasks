@@ -1,11 +1,14 @@
-let form = document.getElementById('frm-task');
-let task = document.getElementById('FormControlInput');
+let form = document.getElementById('frm-task')
+let task = document.getElementById('FormControlInput')
 let btnAdd = document.getElementById('btnAdd')
+let calendar = document.getElementById('calendar')
 
 // Create a new task
 btnAdd.addEventListener('click', function(){
     if (task.value != ""){
         document.getElementById('desc-task').value = task.value
+        document.getElementById('due-date').value = calendar.value
+
         form.setAttribute('action', '/create/')
         form.submit()
     }else{
@@ -32,3 +35,8 @@ btnAdd.addEventListener('click', function(){
         
       });
     });
+
+calendar.addEventListener('change', () => {
+    const selectedDate= calendar.value
+    console.log(selectedDate)
+})  

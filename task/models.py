@@ -7,6 +7,7 @@ class TaskModel(models.Model):
     updated = models.DateTimeField('Updated', auto_now=True)
     description = models.CharField('Description',max_length=100)
     completed = models.BooleanField('Completed', default=False)
+    dueDate = models.DateField('Due Date',blank=True,null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
