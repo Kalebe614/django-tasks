@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import TaskModel
-from django.views.generic.edit import DeleteView, CreateView
+from django.views.generic.edit import DeleteView, CreateView, UpdateView
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -34,3 +34,12 @@ class TaskDeleteView(DeleteView):
         response = super().form_valid(form)
         messages.success(self.request,'Task deleted successfully')
         return response
+
+class TaskUpdateView(UpdateView):
+    template_name = 'task.html'
+    model = TaskModel
+    success_url = reverse_lazy('task')
+    fields = ['completed']
+   
+ 
+    

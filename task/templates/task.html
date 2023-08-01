@@ -87,12 +87,12 @@
                     <!-- Completed -->
                     <td class="align-middle text-center">
                       <div class="form-check">
-                        <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked{{ task.id }}" aria-label="..." {% if task.completed %} checked {% endif %} />
+                        <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked" data-task-id={{task.id}} aria-label="..." {% if task.completed %} checked {% endif %} />
                       </div>
                     </td>
                     
                     <!-- Description -->
-                    <td class="align-middle">{{ task.description }}</td>
+                    <td class="align-middle">{% if task.completed %}<s>{{ task.description }}</s>{% else %}{{ task.description }}{% endif %}</td>
                     
                     <!-- Due date -->
                     <td class="align-middle text-center">
@@ -136,6 +136,11 @@
                 <button type="submit"></button>
               </form>
             
+            <!-- Form to update a task-->
+              <form action="" method="post" id="frm-update" style="display: none">
+              {% csrf_token %}
+              <button type="submit"></button>
+              </form>
 
                      
 
