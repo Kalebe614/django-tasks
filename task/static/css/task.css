@@ -17,5 +17,15 @@ input#calendar {
     position: relative;
    right: 15px;
 }
-  
+
+.content-update{
+    padding: 20px; 
+    background-color: #f2f2f2; 
+}
+.content-update input[type="text"]{
+    width: 425px;
+}
+.content-update input[type="checkbox"] {
+    vertical-align: middle; 
+ }
   

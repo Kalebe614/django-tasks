@@ -1,4 +1,6 @@
 from django.contrib.auth.decorators import login_required
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse
 from django.utils.decorators import method_decorator
 from .models import TaskModel
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
@@ -35,11 +37,25 @@ class TaskDeleteView(DeleteView):
         messages.success(self.request,'Task deleted successfully')
         return response
 
-class TaskUpdateView(UpdateView):
+class TaskUpdateCompletedView(UpdateView):
     template_name = 'task.html'
     model = TaskModel
     success_url = reverse_lazy('task')
     fields = ['completed']
    
- 
+    def form_valid(self, form):
+            response = super().form_valid(form)
+            messages.success(self.request,'Task updated successfully')
+            return response
+
+class TaskUpdateView(UpdateView):
+    template_name = 'task.html'
+    model = TaskModel
+    success_url = reverse_lazy('task')
+    fields = ['description', 'dueDate','completed'] 
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, 'Task updated successfully')
+        return response
     
