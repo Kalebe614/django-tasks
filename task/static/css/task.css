@@ -31,4 +31,7 @@ input#calendar {
 
 .form-filter input[type="submit"]{
    margin-left: 10px;
-}   
+} 
+.pagination{
+   text-align: center;
+}

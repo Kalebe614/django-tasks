@@ -12,7 +12,7 @@ from .utils import filter_and_order_tasks
 class TaskView(ListView):
     template_name = 'task.html'
     context_object_name = 'tasks'
-
+    paginate_by = 10
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
