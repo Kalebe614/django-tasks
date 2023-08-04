@@ -1,9 +1,8 @@
-from typing import Any
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from .models import TaskModel
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from django.urls import reverse_lazy
 from django.contrib import messages
 from .utils import filter_and_order_tasks
