@@ -49,7 +49,7 @@ btnAdd.addEventListener('click', function(){
         frmUpdate.setAttribute('action', urlUpdate)
         document.getElementById('desc-update').value = description
         document.getElementById('due-update').value = dueDate
-        document.getElementById('checkbox-update').checked = (completed === 'True')
+        document.getElementById('completed-update').value = completed
 
     })})
 

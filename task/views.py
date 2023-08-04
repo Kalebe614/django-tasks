@@ -67,11 +67,13 @@ class TaskUpdateView(UpdateView):
     template_name = 'task.html'
     model = TaskModel
     success_url = reverse_lazy('task')
-    fields = ['description', 'dueDate','completed'] 
+    fields = ['description', 'dueDate', 'completed'] 
 
     def form_valid(self, form):
-        if form.cleaned_data['dueDate']:
-            form.instance_completed = True
+        due_date = form.cleaned_data['dueDate']
+        
+        if due_date is not None:
+            form.instance.completed = False
 
         response = super().form_valid(form)
         messages.success(self.request, 'Task updated successfully')
