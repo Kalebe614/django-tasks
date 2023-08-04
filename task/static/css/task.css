@@ -15,7 +15,7 @@ button {
 
 input#calendar {
     position: relative;
-   right: 15px;
+    right: 15px;
 }
 
 .content-update{
@@ -28,4 +28,7 @@ input#calendar {
 .content-update input[type="checkbox"] {
     vertical-align: middle; 
  }
-  
+
+.form-filter input[type="submit"]{
+   margin-left: 10px;
+}   

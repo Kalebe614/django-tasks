@@ -1,0 +1,52 @@
+<!-- Modal Delete -->
+<div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">Delete Task</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body"></div>
+         <div class="modal-footer">
+            <form action="" method="post" id="frm-delete">
+               {% csrf_token %}
+               <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">No</button>
+               <button type="submit" id="btn-yes-delete" class="btn btn-primary">Yes</button>
+            </form>
+         </div>
+      </div>
+   </div>
+</div>
+
+<!-- Modal Update -->
+<div class="modal fade" id="modal-update" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <h5 class="modal-title" id="modalTitle">Update</h5>
+            <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body modal-body-update">
+            <form action="" method="post" id="frm-update">
+               {% csrf_token %}
+               <div class="content-update">
+                  <p>
+                     <label for="description">Description:</label><br>
+                     <input type="text" id="desc-update" class="form-control" name="description" value="Description" required>
+                  </p>
+                  <p>
+                     <label for="dueDate">Due Date</label><br>
+                     <input type="date" id="due-update" name="dueDate" class="form-control">
+                  </p>
+                  <div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
+                  <button type="submit" id="btn-yes-delete" class="btn btn-primary">Update</button>
+            </form>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

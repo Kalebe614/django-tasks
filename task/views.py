@@ -1,20 +1,33 @@
+from typing import Any
 from django.contrib.auth.decorators import login_required
-from django.forms.models import BaseModelForm
-from django.http import HttpResponse
 from django.utils.decorators import method_decorator
 from .models import TaskModel
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy
 from django.contrib import messages
+from .utils import filter_and_order_tasks
+
+
 @method_decorator(login_required, name='dispatch')
 class TaskView(ListView):
     template_name = 'task.html'
-    model = TaskModel
     context_object_name = 'tasks'
-    
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['selected_sort_option'] = self.request.GET.get('filter', 'added')
+        return context
+
     def get_queryset(self):
-        return TaskModel.objects.filter(user=self.request.user)
+
+        filter_option = self.request.GET.get('filter')
+        sort_option = self.request.GET.get('sort')
+
+        queryset = TaskModel.objects.filter(user=self.request.user)
+        return filter_and_order_tasks(queryset, filter_option, sort_option)
+       
 
 class TaskCreateView(CreateView):
     template_name = 'task.html'
@@ -41,9 +54,12 @@ class TaskUpdateCompletedView(UpdateView):
     template_name = 'task.html'
     model = TaskModel
     success_url = reverse_lazy('task')
-    fields = ['completed']
+    fields = ['completed', 'dueDate']
    
     def form_valid(self, form):
+            if form.cleaned_data['completed']:
+                form.instance_dueDate = None
+
             response = super().form_valid(form)
             messages.success(self.request,'Task updated successfully')
             return response
@@ -55,6 +71,9 @@ class TaskUpdateView(UpdateView):
     fields = ['description', 'dueDate','completed'] 
 
     def form_valid(self, form):
+        if form.cleaned_data['dueDate']:
+            form.instance_completed = True
+
         response = super().form_valid(form)
         messages.success(self.request, 'Task updated successfully')
         return response

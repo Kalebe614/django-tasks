@@ -1,0 +1,19 @@
+<form action="" class="form-filter">
+   <div class="d-flex justify-content-end align-items-center mb-4 pt-2 pb-3">
+      <p class="small mb-0 me-2 text-muted">Filter</p>
+   
+         <select class="select" id="filter-select" name="filter">
+            <option value="all" {% if selected_sort_option == "all" %}selected{% endif %}>All</option>
+            <option value="completed"{% if selected_sort_option == "completed" %}selected{% endif %}>Completed</option>
+            <option value="active" {% if selected_sort_option == "active" %}selected{% endif %}>Active</option>
+            <option value="has-due-date"{% if selected_sort_option == "has-due-date" %}selected{% endif %}>Has due date</option>
+         </select>
+         <p class="small mb-0 ms-4 me-2 text-muted">Sort</p>
+         
+         <select class="select" id="sort-select" name="sort">
+            <option value="added" {% if selected_sort_option == "added" %}selected{% endif %}>Added date</option>
+            <option value="dueDate" {% if selected_sort_option == "dueDate" %}selected{% endif %}>Due date</option>
+         </select>
+         <input type="submit" value="Apply"  class="btn btn-success btn-sm">
+   </div>
+</form>
