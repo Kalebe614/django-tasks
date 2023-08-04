@@ -1,0 +1,14 @@
+ <!-- Form to create a task-->
+<form action="" method="post" id="frm-task" style="display: none;">
+    {% csrf_token %}
+    <input type="text" value="" name="description" id="desc-task">
+    <input type="date" value="" name="dueDate" id="due-date">
+    <button type="submit"></button>
+ </form>
+
+
+ <!-- Form to update checkbox completed a task-->
+ <form action="" method="post" id="frm-update-completed" style="display: none">
+    {% csrf_token %}
+    <button type="submit"></button>
+ </form>

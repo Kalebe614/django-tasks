@@ -66,6 +66,8 @@ btnAdd.addEventListener('click', function(){
         completed.setAttribute('name','completed')
         completed.setAttribute('value',checked)
         
+        
+
         formUpdate.setAttribute('action', url)
         formUpdate.appendChild(completed)
         
@@ -74,6 +76,7 @@ btnAdd.addEventListener('click', function(){
     })})
 
 
+    
 //Calendar
 calendar.addEventListener('change', () => {
     const selectedDate= calendar.value

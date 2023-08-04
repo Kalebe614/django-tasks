@@ -1,0 +1,52 @@
+<table>
+   <thead>
+      <tr>
+         <th style="width: 10%;">Completed</th>
+         <th style="width: 60%;">Description</th>
+         <th style="width: 15%; text-align: center;">Due Date</th>
+         <th style="width: 15%; text-align: center;">Actions</th>
+      </tr>
+   </thead>
+   <tbody id="task-table">
+      {% for task in tasks %}
+      <tr>
+         <!-- Checkbox -->
+         <td class="align-middle text-center">
+            <div class="form-check">
+               <input class="form-check-input me-0" type="checkbox" value="" id="flexCheckChecked" data-task-id={{task.id}} aria-label="..." {% if task.completed %} checked {% endif %} />
+            </div>
+         </td>
+         <!-- Description -->
+         <td class="align-middle">{% if task.completed %}<s>{{ task.description }}</s>{% else %}{{ task.description }}{% endif %}</td>
+         <!-- Due date -->
+         <td class="align-middle text-center">
+            {% if task.dueDate %}
+            <div class="py-2 px-3 me-2 border border-warning rounded-3 d-flex align-items-center bg-light">
+               <p class="small mb-0">   
+                  <a href="#!" data-mdb-toggle="tooltip" title="Due on date">
+                  <i class="fas fa-hourglass-half me-2 text-warning"></i>
+                  </a>
+                  {{task.dueDate}}
+               </p>
+            </div>
+            {% endif %}
+         </td>
+         <!-- Actions-->
+         <td class="align-middle text-center">
+            <div class="d-flex flex-row justify-content-end mb-1">
+               <button type="button" name="btn-update"  class="text-info" data-mdb-toggle="modal" data-mdb-target="#modal-update"
+               data-task-id="{{task.id}}" data-task-description="{{task.description}}" data-task-due="{{task.dueDate|date:'Y-m-d'}}"
+               data-task-completed={%if task.completed %}"True"{%else%}"False"{%endif%}><i class="fas fa-pencil-alt me-3"></i></button>
+               <button type="button" name="btn-delete" class="text-danger" data-mdb-toggle="modal" data-mdb-target="#modal" data-task-id="{{task.id}}" data-task-description="{{task.description}}">
+               <i class="fas fa-trash-alt"></i></button>
+            </div>
+            <div class="text-end text-muted">
+               <a href="" class="text-muted" data-mdb-toggle="tooltip" title="Created date">
+                  <p class="small mb-0"><i class="fas fa-info-circle me-2"></i>{{ task.created }}</p>
+               </a>
+            </div>
+         </td>
+      </tr>
+      {% endfor %}
+   </tbody>
+</table>
