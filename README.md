@@ -98,14 +98,16 @@ python manage.py migrate
 python manage.py runserver
 ```
 </p>
-</p>
 <p>
 6. Now you can open: http://localhost:8000 or http://127.0.0.1:8000 to view it in the browser.
 </p>
+<p>
 7. Create a user:
-
+</p>
+<p>
 Click below the login button to create a new user and password, then enter using this new username and password.
 </p>
+
 
 
 ## Credits
