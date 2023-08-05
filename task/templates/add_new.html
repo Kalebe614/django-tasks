@@ -1,14 +1,18 @@
-<div class="pb-2">
-    <div class="card">
-       <div class="card-body">
-          <div class="d-flex flex-row align-items-center">
-             <input type="text" class="form-control form-control-lg" id="FormControlInput"
-                placeholder="Add new...">
-             <input type = "date" data-mdb-toggle="tooltip" title="Set due date" id="calendar">  
-             <div>
-                <button type="button" class="btn btn-primary" id="btnAdd">Add</button>
-             </div>
-          </div>
-       </div>
-    </div>
- </div>
+<form action="{% url 'create'%}" method="post">
+   {% csrf_token %}
+   <div class="pb-2">
+      <div class="card">
+         <div class="card-body">
+            <div class="d-flex flex-row align-items-center">
+            
+               <input type="text" name="description" value="" class="form-control form-control-lg" id="FormControlInput"
+                  placeholder="Add new..." required>
+               <input type = "date" name="dueDate" data-mdb-toggle="tooltip" title="Set due date" id="calendar">  
+               <div>
+                  <button type="submit" class="btn btn-primary" id="btnAdd">Add</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+ </form>

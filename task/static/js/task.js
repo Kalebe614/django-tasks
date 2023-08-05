@@ -1,23 +1,7 @@
-let form = document.getElementById('frm-task')
-let task = document.getElementById('FormControlInput')
-let btnAdd = document.getElementById('btnAdd')
 let calendar = document.getElementById('calendar')
 let linksToDelete = document.querySelectorAll('button[name="btn-delete"]')
 let linksToUpdate = document.querySelectorAll('button[name="btn-update"]')
 let flexCheckChecked = document.querySelectorAll('#flexCheckChecked')
-
-// Create a new task
-btnAdd.addEventListener('click', function(){
-    if (task.value != ""){
-        document.getElementById('desc-task').value = task.value
-        document.getElementById('due-date').value = calendar.value
-
-        form.setAttribute('action', '/create/')
-        form.submit()
-    }else{
-        alert('Please enter a task')
-    }
-})
 
 //Delete a task
  
@@ -28,8 +12,8 @@ btnAdd.addEventListener('click', function(){
         const modalBody= document.querySelector('.modal-body')
         const frmDelete = document.getElementById('frm-delete')
         const url = `/delete/${id}/`
-        frmDelete.setAttribute('action', url)
         
+        frmDelete.setAttribute('action', url)
         modalBody.innerHTML = `
             <p id="msgAreYouSure">Are you sure you want to delete the task?</p>
             <p>${description}</p>`
@@ -65,8 +49,6 @@ btnAdd.addEventListener('click', function(){
         completed.setAttribute('type', 'text')
         completed.setAttribute('name','completed')
         completed.setAttribute('value',checked)
-        
-        
 
         formUpdate.setAttribute('action', url)
         formUpdate.appendChild(completed)
@@ -74,8 +56,6 @@ btnAdd.addEventListener('click', function(){
         formUpdate.submit()
 
     })})
-
-
     
 //Calendar
 calendar.addEventListener('change', () => {
