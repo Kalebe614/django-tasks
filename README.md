@@ -29,14 +29,14 @@ Django allauth:
 
 Task:
 
-Task Creation: Create new tasks with due dates or without.
-Task Completion: Mark tasks as completed or incomplete.
-Task Editing: Edit task details, such as description and due date.
-Task Deletion: Delete tasks you no longer need.
-Task Listing: List tasks.
-Task Pagination: Enabling pagination for every 10 tasks
+- Task Creation: Create new tasks with due dates or without.
+- Task Completion: Mark tasks as completed or incomplete.
+- Task Editing: Edit task details, such as description and due date.
+- Task Deletion: Delete tasks you no longer need.
+- Task Listing: List tasks.
+- Task Pagination: Enabling pagination for every 10 tasks
 
-![Img_Project](core/static/images/tasks.png)
+![Img_Project](tasks.png)
 
 
 
