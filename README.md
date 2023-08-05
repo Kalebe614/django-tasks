@@ -90,7 +90,7 @@ pip install -r requirements.txt
 ```
 python manage.py migrate
 ```
-</p>
+
 <p>
 5. Execute the project:
 
@@ -98,9 +98,15 @@ python manage.py migrate
 python manage.py runserver
 ```
 </p>
-<p>
-Now you can open: http://localhost:8000 or http://127.0.0.1:8000 to view it in the browser.
 </p>
+<p>
+6. Now you can open: http://localhost:8000 or http://127.0.0.1:8000 to view it in the browser.
+</p>
+7. Create a user:
+
+Click below the login button to create a new user and password, then enter using this new username and password.
+</p>
+
 
 ## Credits
 CRUD app was built by [Kalebe de Oliveira][my_github]
