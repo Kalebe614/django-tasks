@@ -16,8 +16,8 @@ class TaskView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['selected_filter_option'] = self.request.GET.get('filter', 'default_filter_option')
-        context['selected_sort_option'] = self.request.GET.get('sort', 'default_sort_option')
+        context['selected_filter_option'] = self.request.GET.get('filter', 'all')
+        context['selected_sort_option'] = self.request.GET.get('sort', 'added')
         return context
 
     def get_queryset(self):
