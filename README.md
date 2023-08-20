@@ -14,7 +14,7 @@
 
 [bootstrap]: https://getbootstrap.com/
 
-[my_github]: [https://github.com/Kalebe614](https://kalebe614.github.io/)
+[my_github]: https://kalebe614.github.io/
 
 #### <p align="center">A simple task management web application built using [Django], [Django-Allauth], [Bootstrap], [JavaScript], [CSS], and [HTML].
 
